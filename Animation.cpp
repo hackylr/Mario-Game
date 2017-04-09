@@ -1,0 +1,53 @@
+#include "Animation.h"
+
+
+
+Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
+{
+	this->imageCount = imageCount;
+	this->switchTime = switchTime;
+	totalTime = 0.0f;
+	currentImage.x = 0;
+
+	uvRect.width = texture->getSize().x / float(imageCount.x);
+	uvRect.height = texture->getSize().y / float(imageCount.y);
+
+}
+
+
+Animation::~Animation()
+{
+}
+
+void Animation::update(int row, float deltaTime, bool faceRight)
+{
+	currentImage.y = row;
+	totalTime += deltaTime;
+
+	if (totalTime >= switchTime)
+	{
+		totalTime -= switchTime;
+		currentImage.x++;
+
+		//This is to cycle through the tux and such
+		if (currentImage.x >= imageCount.x)
+		{
+			currentImage.x = 0;
+		}
+	}
+
+
+	uvRect.top = currentImage.y * uvRect.height;
+
+	//This is determine if walking left or right
+	if (faceRight)
+	{
+		uvRect.left = currentImage.x * uvRect.width;
+		uvRect.width = abs(uvRect.width);
+	}
+	else
+	{
+		uvRect.left = (currentImage.x + 1) * abs(uvRect.width);
+		uvRect.width = -abs(uvRect.width);
+	}
+}
