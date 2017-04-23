@@ -6,7 +6,8 @@
 class Player
 {
 public:
-	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float jumpHeight);
+	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float jumpHeight
+	, float x, float y);
 	~Player();
 
 	void Update(float deltaTime);

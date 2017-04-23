@@ -2,7 +2,8 @@
 
 
 
-Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float jumpHeight) :
+Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float jumpHeight
+ , float x, float y) :
 	animation(texture, imageCount, switchTime)
 {
 	this->speed = speed;
@@ -12,7 +13,8 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 	body.setSize(sf::Vector2f(100.0f, 150.0f));
 	body.setOrigin(body.getSize() / 2.0f);
-	body.setPosition(200.0f, 200.0f);
+	body.setPosition(x, y);
+	//body.setPosition(200.0f, 200.0f);
 	body.setTexture(texture);
 }
 
@@ -25,7 +27,7 @@ void Player::Update(float deltaTime)
 {
 	//THis is to see if the player stops immediately or slows down
 	velocity.x = 0.0f;
-	
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		velocity.x -= speed;
@@ -50,12 +52,11 @@ void Player::Update(float deltaTime)
 	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		movement.y -= speed*deltaTime;
+	movement.y -= speed*deltaTime;
 	}
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		movement.y += speed*deltaTime;
+	movement.y += speed*deltaTime;
 	}
 	*/
 
