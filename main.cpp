@@ -11,7 +11,6 @@
 int main() {
 sf::Window window(sf::VideoMode(800, 600), "Window", sf::Style::Default);
 //window.setVerticalSyncEnabled(true); // call it once, after creating the window
-
 //window.setPosition(sf::Vector2i(100, 100));
 //sf::Vector2u size = window.getSize();
 //unsigned int width = size.x;
@@ -98,18 +97,18 @@ int main()
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(500.0f, 100.0f), sf::Vector2f(2700.0f, 200.0f)));
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(3100.0f, 25.0f)));
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(300.0f, 100.0f), sf::Vector2f(3300.0f, -150.0f)));
-	
+
 	// cool structure within this part
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(150.0f, 500.0f), sf::Vector2f(3300.0f, -700.0f)));
-	
+
 	//There is something wrong with this one, changed to be lower. Original was -350
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(200.0f, 100.0f), sf::Vector2f(3700.0f, -345.0f)));
-	
+
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(3550.0f, -150.0f)));
 
 	//Changed from -550
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(200.0f, 100.0f), sf::Vector2f(3900.0f, -540.0f)));
-	
+
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(4200.0f, -675.0f)));
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(150.0f, 100.0f), sf::Vector2f(3900.0f, -800.0f)));
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(150.0f, 500.0f), sf::Vector2f(4300.0f, -700.0f)));
@@ -172,12 +171,23 @@ int main()
 			case sf::Event::Closed:
 				window.close();
 				break;
-				
+
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::Num1)
 				{
 					std::cout << "You have selected the Easy Course!" << std::endl;
 					val = 1;
+				}
+				if (event.key.code == sf::Keyboard::Num2)
+				{
+					std::cout << "You have selected the Medium Course!" << std::endl;
+					val = 2;
+				}
+				if (event.key.code == sf::Keyboard::Num1)
+				{
+					std::cout << "You have selected the Hard Course!" << std::endl;
+					//std::cout << "But you need to pay for this"
+					val = 3;
 				}
 				if (event.key.code == sf::Keyboard::Escape)
 				{
@@ -185,7 +195,7 @@ int main()
 				}
 				break;
 
-				
+
 				/*
 				case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::Escape)
@@ -196,8 +206,6 @@ int main()
 				{
 				std::cout << "Another key was pressed" << std::endl;
 				}
-
-				
 
 				case sf::Event::TextEntered:
 				if (event.text.unicode < 128)
@@ -266,46 +274,45 @@ int main()
 
 		window.clear(sf::Color(150, 150, 150));
 		window.setView(view);
-		
-		
+
+
 		switch (val)
 		{
-			case 1:
-				player.Draw(window);
-				for (Platform& platform : platforms1)
-				{
-					platform.Draw(window);
-				}
-				pos = player.GetPosition();
-				//std::cout << pos.x;
-				//std::cout << pos.y << std::endl;
-				//This will repeatedly show the message....I guess it's ok. It's kind of funny haha
-				
-				if (8000.0f < pos.x && pos.x <= 8300.0f && pos.y == -175.0f)
-				{
-					std::cout << "Congratualations! You finished the course!" << std::endl;
-					//std::cout << "Press Escape to escape!" << std::endl;
-					//getch();
-				}
-				
-				
-				break;
+		case 1:
+			player.Draw(window);
+			for (Platform& platform : platforms1)
+			{
+				platform.Draw(window);
+			}
+			pos = player.GetPosition();
+			//std::cout << pos.x;
+			//std::cout << pos.y << std::endl;
+			//This will repeatedly show the message....I guess it's ok. It's kind of funny haha
+
+			if (8000.0f < pos.x && pos.x <= 8300.0f && pos.y == -175.0f)
+			{
+				std::cout << "Congratualations! You finished the course!" << std::endl;
+				//std::cout << "Press Escape to escape!" << std::endl;
+				//getch();
+			}
+
+
+			break;
 		}
-			
+
 		window.display();
 	}
 	/*
-		I could put the message here, but it does not show up until I close out the window. 
-		So it will show up briefly for like half a second...
-	
+	I could put the message here, but it does not show up until I close out the window.
+	So it will show up briefly for like half a second...
 
 	if (8000.0f < pos.x && pos.x <= 8300.0f && pos.y == -175.0f)
 	{
-		std::cout << "Congratualations! You finished the course!" << std::endl;
-		//std::cout << "Press Escape to escape!" << std::endl;
-		_getch();
+	std::cout << "Congratualations! You finished the course!" << std::endl;
+	//std::cout << "Press Escape to escape!" << std::endl;
+	_getch();
 	}
 	*/
-	
+
 	return 0;
 }
