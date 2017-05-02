@@ -3,7 +3,7 @@
 
 
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float jumpHeight
- , float x, float y) :
+	, float x, float y) :
 	animation(texture, imageCount, switchTime)
 {
 	this->speed = speed;
