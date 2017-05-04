@@ -59,7 +59,9 @@ int main()
 	//shape.setFillColor(sf::Color::Yellow);
 	//shape.setOrigin(50.0f, 50.0f);
 	sf::Texture playerTexture;
+	sf::Texture enemyTexture;
 	playerTexture.loadFromFile("tux_from_linux.png");
+	enemyTexture.loadFromFile("pacman_from_philippines.png");
 	//shape.setTexture(&shapeTexture);
 
 	//VIEW******************************
@@ -68,8 +70,8 @@ int main()
 	//ANIMATION************************
 	// For testing the ending
 	//Player player(&playerTexture, sf::Vector2u(3, 9), 0.3f, 150.0f, 200.0f, 7300.0f, -2100.0f);
-	Player player(&playerTexture, sf::Vector2u(3, 9), 0.3f, 150.0f, 200.0f, 200.0f, 200.0f);
-	Player player2(&playerTexture, sf::Vector2u(3, 9), 0.3f, 150.0f, 200.0f, 300.0f, 300.0f);
+	Player player(&playerTexture, sf::Vector2u(3, 9), 0.3f, 150.0f, 200.0f, 200.0f, 200.0f, 100.0f, 150.0f);
+	Player enemy(&enemyTexture, sf::Vector2u(3, 9), 0.3f, 0.0f, 0.0f, 400.0f, 200.0f, 40.0f, 65.0f);
 	float deltaTime = 0.0f;
 	sf::Clock clock;
 
@@ -166,8 +168,13 @@ int main()
 	std::cout << "Enter 1 for Easy, 2 for Medium, 3 for Hard" << std::endl;
 	int val = 0;
 	sf::Vector2f pos;
+	sf::Vector2f enemyPos;
+
 	bool printVictoryMsg = false;
 	bool printDeathMsg = false;
+
+	bool playerKilled = false;
+	bool enemyKilled = false;
 
 	while (window.isOpen())
 	{
@@ -285,8 +292,8 @@ int main()
 				if (platform.GetCollider().CheckCollider(player.GetCollider(), direction, 1.0f))
 					player.onCollision(direction);
 
-				if (platform.GetCollider().CheckCollider(player2.GetCollider(), direction, 1.0f))
-					player2.onCollision(direction);
+				if (platform.GetCollider().CheckCollider(enemy.GetCollider(), direction, 1.0f))
+					enemy.onCollision(direction);
 			}
 
 			player.Draw(window);
@@ -338,15 +345,39 @@ int main()
 
 		case 3: 
 			player.Update(deltaTime);
-			player2.Update(deltaTime);
+			enemy.Update(deltaTime);
+
+			pos = player.GetPosition();
+			enemyPos = enemy.GetPosition();
 
 			for (Platform& platform : platforms3)
 			{
 				if (platform.GetCollider().CheckCollider(player.GetCollider(), direction, 1.0f))
 					player.onCollision(direction);
 
-				if (platform.GetCollider().CheckCollider(player2.GetCollider(), direction, 1.0f))
-					player2.onCollision(direction);
+				if (platform.GetCollider().CheckCollider(enemy.GetCollider(), direction, 1.0f))
+					enemy.onCollision(direction);
+
+				if (!enemyKilled && !playerKilled) {
+					//std::cout << "Our y position: " << pos.y;
+					//std::cout << "Their y position: " << enemyPos.y << std::endl;
+					//if (abs(pos.x - enemyPos.x) < 5.0f) {
+					if (abs(pos.x - enemyPos.x) < 15.0f && abs(pos.y - enemyPos.y) <= 150.0f) {
+						std::cout << "You killed the enemy!" << std::endl;
+						enemyKilled = true;
+					}
+
+					else if (player.GetCollider().CheckCollider(enemy.GetCollider(), direction, 1.0f) && pos.y <= enemyPos.y) {
+						/*std::cout << "Our x position: " << pos.x;
+						std::cout << "Our y position: " << pos.y;
+						std::cout << "Their x position: " << enemyPos.x;
+						std::cout << "Their y position: " << enemyPos.y;*/
+
+						std::cout << "You died!" << std::endl;
+						std::cout << "To start over, press escape!" << std::endl;
+						playerKilled = true;
+					}
+				}
 			}
 
 			/*
@@ -354,19 +385,23 @@ int main()
 			platform2.GetCollider().CheckCollider(player.GetCollider(), 1.0f);
 			*/
 
-			//next
-			player.Draw(window);
-			player2.Draw(window);
+			if (!playerKilled) {
+				player.Draw(window);
+			}
+
+			if (!enemyKilled) {
+				enemy.Draw(window);
+			}
 
 			for (Platform& platform : platforms3)
 			{
 				platform.Draw(window);
 			}
-			pos = player.GetPosition();
+
 			//std::cout << pos.x;
 			//std::cout << pos.y << std::endl;
 			//This will repeatedly show the message....I guess it's ok. It's kind of funny haha
-
+			
 			if (8100.0f <= pos.x && pos.x <= 8500.0f && pos.y == -175.0f && !printVictoryMsg)
 			{
 				printVictoryMsg = true;

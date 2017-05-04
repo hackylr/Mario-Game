@@ -7,7 +7,7 @@ class Player
 {
 public:
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float jumpHeight
-	, float x, float y);
+	, float x, float y, float sizeX, float sizeY);
 	~Player();
 
 	void Update(float deltaTime);
@@ -16,6 +16,20 @@ public:
 
 	sf::Vector2f GetPosition()
 	{
+		return body.getPosition();
+	}
+
+	float getSizeX() {
+		return sizeX;
+	}
+
+	float getSizeY() {
+		return sizeY;
+	}
+
+	sf::Vector2f SetPosition(float x, float y)
+	{
+		body.setPosition(x, y);
 		return body.getPosition();
 	}
 
@@ -34,4 +48,7 @@ private:
 	sf::Vector2f velocity;
 	bool canJump;
 	float jumpHeight;
+
+	float sizeX;
+	float sizeY;
 };

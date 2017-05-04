@@ -3,15 +3,17 @@
 
 
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float jumpHeight
-	, float x, float y) :
+	, float x, float y, float sizeX, float sizeY) :
 	animation(texture, imageCount, switchTime)
 {
 	this->speed = speed;
 	this->jumpHeight = jumpHeight;
 	row = 0;
 	faceRight = true;
+	this->sizeX = sizeX;
+	this->sizeY = sizeY;
 
-	body.setSize(sf::Vector2f(100.0f, 150.0f));
+	body.setSize(sf::Vector2f(sizeX, sizeY));
 	body.setOrigin(body.getSize() / 2.0f);
 	body.setPosition(x, y);
 	//body.setPosition(200.0f, 200.0f);
