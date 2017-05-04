@@ -74,70 +74,79 @@ int main()
 	sf::Clock clock;
 
 	std::vector<Platform> platforms1;
-	/*
-	platforms.push_back(Platform(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, 200.0f)));
-	platforms.push_back(Platform(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, 0.0f)));
-	platforms.push_back(Platform(nullptr, sf::Vector2f(1000.0f, 200.0f), sf::Vector2f(500.0f, 500.0f)));
-	*/
 
 	// 1. From start zone to long and high block
 	platforms1.push_back(Platform(nullptr, sf::Vector2f(1000.0f, 200.0f), sf::Vector2f(500.0f, 500.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(1000.0f, 300.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(800.0f, 150.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(150.0f, 150.0f), sf::Vector2f(600.0f, 50.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(350.0f, -150.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(600.0f, -300.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(750.0f, -400.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(800.0f, 200.0f), sf::Vector2f(1450.0f, 0.0f)));
+	platforms1.push_back(Platform(nullptr, sf::Vector2f(1000.0f, 200.0f), sf::Vector2f(700.0f, 350.0f)));
+	platforms1.push_back(Platform(nullptr, sf::Vector2f(1000.0f, 200.0f), sf::Vector2f(900.0f, 200.0f)));
+	platforms1.push_back(Platform(nullptr, sf::Vector2f(800.0f, 200.0f), sf::Vector2f(1450.0f, 50.0f)));
+
+	std::vector<Platform> platforms2;
+
+	platforms2.push_back(Platform(nullptr, sf::Vector2f(800.0f, 200.0f), sf::Vector2f(500.0f, 500.0f)));
+	platforms2.push_back(Platform(nullptr, sf::Vector2f(300.0f, 200.0f), sf::Vector2f(1200.0f, 300.0f)));
+	platforms2.push_back(Platform(nullptr, sf::Vector2f(300.0f, 200.0f), sf::Vector2f(1500.0f, 100.0f)));
+
+	std::vector<Platform> platforms3;
+
+	// 1. From start zone to long and high block
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(1000.0f, 200.0f), sf::Vector2f(500.0f, 500.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(1000.0f, 300.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(800.0f, 150.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(150.0f, 150.0f), sf::Vector2f(600.0f, 50.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(350.0f, -150.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 50.0f), sf::Vector2f(600.0f, -300.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(750.0f, -400.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(800.0f, 200.0f), sf::Vector2f(1450.0f, 0.0f)));
 
 	//remove when done testing (cheat block to skip part 1s)
 	//platforms.push_back(Platform(nullptr, sf::Vector2f(225.0f, 100.0f), sf::Vector2f(1100.0f, 25.0f)));
 
 	// 2. from high block to even higher block
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(200.0f, 200.0f), sf::Vector2f(2100.0f, -150.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 500.0f), sf::Vector2f(2450.0f, -300.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2250.0f, 300.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(500.0f, 100.0f), sf::Vector2f(2700.0f, 200.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(3100.0f, 25.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(300.0f, 100.0f), sf::Vector2f(3300.0f, -150.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(200.0f, 200.0f), sf::Vector2f(2100.0f, -150.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 500.0f), sf::Vector2f(2450.0f, -300.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(50.0f, 50.0f), sf::Vector2f(2250.0f, 300.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(500.0f, 100.0f), sf::Vector2f(2700.0f, 200.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(3100.0f, 25.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(300.0f, 100.0f), sf::Vector2f(3300.0f, -150.0f)));
 
 	// cool structure within this part
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(150.0f, 500.0f), sf::Vector2f(3300.0f, -700.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(150.0f, 500.0f), sf::Vector2f(3300.0f, -700.0f)));
 
 	//There is something wrong with this one, changed to be lower. Original was -350
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(200.0f, 100.0f), sf::Vector2f(3700.0f, -345.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(200.0f, 100.0f), sf::Vector2f(3700.0f, -345.0f)));
 
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(3550.0f, -150.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(3550.0f, -150.0f)));
 
 	//Changed from -550
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(200.0f, 100.0f), sf::Vector2f(3900.0f, -540.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(200.0f, 100.0f), sf::Vector2f(3900.0f, -540.0f)));
 
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(4200.0f, -675.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(150.0f, 100.0f), sf::Vector2f(3900.0f, -800.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(150.0f, 500.0f), sf::Vector2f(4300.0f, -700.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(1100.0f, 100.0f), sf::Vector2f(3800.0f, -1200.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(4200.0f, -675.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(150.0f, 100.0f), sf::Vector2f(3900.0f, -800.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(150.0f, 500.0f), sf::Vector2f(4300.0f, -700.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(1100.0f, 100.0f), sf::Vector2f(3800.0f, -1200.0f)));
 
 	// 3. from even higher block to highest of all blocks (or is it?)
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(500.0f, 100.0f), sf::Vector2f(4750.0f, -1050.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5200.0f, -1200.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5400.0f, -1300.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5600.0f, -1400.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5800.0f, -1500.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6000.0f, -1600.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6200.0f, -1700.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6400.0f, -1800.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6600.0f, -1900.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6800.0f, -2000.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(7000.0f, -2170.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(400.0f, 100.0f), sf::Vector2f(7300.0f, -1800.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(500.0f, 100.0f), sf::Vector2f(4750.0f, -1050.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5200.0f, -1200.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5400.0f, -1300.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5600.0f, -1400.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(5800.0f, -1500.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6000.0f, -1600.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6200.0f, -1700.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6400.0f, -1800.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6600.0f, -1900.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(6800.0f, -2000.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(7000.0f, -2170.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(400.0f, 100.0f), sf::Vector2f(7300.0f, -1800.0f)));
 
 	// final stretch to the top (and end of the course)
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(25.0f, 25.0f), sf::Vector2f(7700.0f, -1900.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(25.0f, 25.0f), sf::Vector2f(7900.0f, -2050.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(25.0f, 25.0f), sf::Vector2f(8100.0f, -2225.0f)));
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(300.0f, 200.0f), sf::Vector2f(8600.0f, -2426.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(25.0f, 25.0f), sf::Vector2f(7700.0f, -1900.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(25.0f, 25.0f), sf::Vector2f(7900.0f, -2050.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(25.0f, 25.0f), sf::Vector2f(8100.0f, -2225.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(300.0f, 200.0f), sf::Vector2f(8600.0f, -2426.0f)));
 	// and then we end at the bottom
-	platforms1.push_back(Platform(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(8300.0f, 0.0f)));
+	platforms3.push_back(Platform(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(8300.0f, 0.0f)));
 
 
 	/*
@@ -184,12 +193,25 @@ int main()
 					std::cout << "You have selected the Easy Course!" << std::endl;
 					val = 1;
 				}
-				if (event.key.code == sf::Keyboard::Escape)
+
+				else if (event.key.code == sf::Keyboard::Num2)
+				{
+					std::cout << "You have selected the Medium Course!" << std::endl;
+					val = 2;
+				}
+
+				else if (event.key.code == sf::Keyboard::Num3)
+				{
+					std::cout << "You have selected the Hard Course!" << std::endl;
+					val = 3;
+				}
+				
+				else if (event.key.code == sf::Keyboard::Escape)
 				{
 					window.close();
 				}
-				break;
 
+				break;
 
 				/*
 				case sf::Event::KeyPressed:
@@ -201,8 +223,6 @@ int main()
 				{
 				std::cout << "Another key was pressed" << std::endl;
 				}
-
-
 
 				case sf::Event::TextEntered:
 				if (event.text.unicode < 128)
@@ -249,40 +269,96 @@ int main()
 			//shape.setPosition(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 			}
 			*/
-
-
 		}
-		player.Update(deltaTime);
-		player2.Update(deltaTime);
-
+		
 		sf::Vector2f direction;
-
-		for (Platform& platform : platforms1)
-		{
-			if (platform.GetCollider().CheckCollider(player.GetCollider(), direction, 1.0f))
-				player.onCollision(direction);
-
-			if (platform.GetCollider().CheckCollider(player2.GetCollider(), direction, 1.0f))
-				player2.onCollision(direction);
-		}
-
-		/*
-		platform1.GetCollider().CheckCollider(player.GetCollider(), 0.0f);
-		platform2.GetCollider().CheckCollider(player.GetCollider(), 1.0f);
-		*/
-
 		view.setCenter(player.GetPosition());
-
 		window.clear(sf::Color(150, 150, 150));
 		window.setView(view);
-		
+
 		switch (val)
 		{
 		case 1:
+			player.Update(deltaTime);
+			for (Platform& platform : platforms1)
+			{
+				if (platform.GetCollider().CheckCollider(player.GetCollider(), direction, 1.0f))
+					player.onCollision(direction);
+
+				if (platform.GetCollider().CheckCollider(player2.GetCollider(), direction, 1.0f))
+					player2.onCollision(direction);
+			}
+
+			player.Draw(window);
+
+			for (Platform& platform : platforms1)
+			{
+				platform.Draw(window);
+			}
+			pos = player.GetPosition();
+			
+			if (1650.0f <= pos.x && pos.x <= 1850.0f && !printVictoryMsg)
+			{
+				printVictoryMsg = true;
+				std::cout << "Congratualations! You finished the course!" << std::endl;
+				//std::cout << "Press Escape to escape!" << std::endl;
+				//getch();
+			}
+
+			if (pos.y > 500.0f && !printDeathMsg) {
+				printDeathMsg = true;
+				std::cout << "Unfortunately, you have died! Please exit and restart to try again!" << std::endl;
+			}
+			break;
+		
+		case 2: 
+
+			player.Update(deltaTime);
+			
+			for (Platform& platform : platforms2)
+			{
+				if (platform.GetCollider().CheckCollider(player.GetCollider(), direction, 1.0f))
+					player.onCollision(direction);
+			}
+
+			player.Draw(window);
+
+			for (Platform& platform : platforms2)
+			{
+				platform.Draw(window);
+			}
+
+			pos = player.GetPosition();
+
+			if (pos.y > 500.0f && !printDeathMsg) {
+				printDeathMsg = true;
+				std::cout << "Unfortunately, you have died! Please exit and restart to try again!" << std::endl;
+			}
+			break;
+
+		case 3: 
+			player.Update(deltaTime);
+			player2.Update(deltaTime);
+
+			for (Platform& platform : platforms3)
+			{
+				if (platform.GetCollider().CheckCollider(player.GetCollider(), direction, 1.0f))
+					player.onCollision(direction);
+
+				if (platform.GetCollider().CheckCollider(player2.GetCollider(), direction, 1.0f))
+					player2.onCollision(direction);
+			}
+
+			/*
+			platform1.GetCollider().CheckCollider(player.GetCollider(), 0.0f);
+			platform2.GetCollider().CheckCollider(player.GetCollider(), 1.0f);
+			*/
+
+			//next
 			player.Draw(window);
 			player2.Draw(window);
 
-			for (Platform& platform : platforms1)
+			for (Platform& platform : platforms3)
 			{
 				platform.Draw(window);
 			}
@@ -303,8 +379,6 @@ int main()
 				printDeathMsg = true;
 				std::cout << "Unfortunately, you have died! Please exit and restart to try again!" << std::endl;
 			}
-
-
 			break;
 		}
 
